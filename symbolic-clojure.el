@@ -32,7 +32,7 @@
 ;;
 ;;; Code:
 
-(require 'clojure-mode)
+;; (require 'clojure-mode)
 
 (make-variable-buffer-local
  (defvar foo-count 0
@@ -63,7 +63,7 @@
 		("#(" . (?ƒ (Br . Bl) ?\( ))
 		;; ("if" . (?\s (Br . Bl) ?\s (Bc . Bc) ?⊃))
 		("if" . (?⊃ (Br . Bl) ?⊃))
-		[]("ns" . (?\s (Br . Bl) ?\s (Bc . Bc) ?§))
+		("ns" . (?\s (Br . Bl) ?\s (Bc . Bc) ?§))
                 ("=" .  ?≡)
 		("/" .  ?÷)
 		("*" .  ?×)
@@ -85,9 +85,9 @@
 		;; (":require" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?✱ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; (":require" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?ɼ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; (":require" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?Ʀ Ȑ Я ⁜  ⅀ ⅅ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
-		(":require" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?Ȑ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		(":require" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?ℛ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; (":import" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?ἵ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
-		(":import" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?Ï (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		(":import" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?ℐ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		("do" . (?\s (Br . Bl) ?\s (Bc . Bc) ?⊨))
 		;; ("do" . (?\s (Br . Bl) ?\s (Bc . Bc) ?⥽))
 		;; ("and" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?\∧ (Bc . Bl) ?\∧))
@@ -110,10 +110,12 @@
 		("when" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br)  ?⊃ (Bc . Bl) ?\s))
 		("comp" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br)  ?∘ (Bc . Bl) ?\s))
 		("juxt" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br)  ?◫ (Bc . Bl) ?\s))
-		;; ⁁ ƒ ∘ ⬗ ◫ ⧑ ⌨ ◧ ⚠ ₪
+                ;; ⁁ ƒ ∘ ⬗ ◫ ⧑ ⌨ ◧ ⚠ ₪
 		;; ("loop" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br)  ?∞ (Bc . Bl) ?\s))
 		;; ("loop" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?∞ (Br . Bl)  ?∞ (Bc . Bl) ?\s))
 		("loop" .  (?\s (Br . Bl) ?∞ (Br . Bl)  ?∞ (Br . Bl) ?\s (Br . Bl) ?\s))
+		("cond" .  (?⊃ (Br . Bl)  ?⊃ (Br . Bl) ?⊃ (Br . Bl) ?\s))
+		(":else" .  (?Ω  (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; ("true" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?⊤ (Bc . Bl) ?⊤))
 		("true" .  (?⊤  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; ("nil?" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?∅ (Bc . Bl) ??))
@@ -131,9 +133,9 @@
 		("false?" . (?¿ (Br . Bl) ?⊥ (Br . Bl) ?? (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		(":refer" . (?※ (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		("if-not" . (?\s (Br . Bl) ?\s (Br . Bl) ?⊃ (Bc . Bc) ?⊃ (Br . Bl) ?¬  (Br . Bl) ?\s (Br . Bl) ?\s)) ; tricky!!
-		("if-let" . (?\s (Br . Bl) ?\s (Br . Bl) ?⊃ (Bc . Bc) ?⊃ (Br . Bl) ?∃  (Br . Bl) ?\s (Br . Bl) ?\s))
+		("if-let" . (?\s (Br . Bl) ?\s (Br . Bl) ?⊃ (Bc . Bc) ?⊃ (Br . Bl) ?ⅅ  (Br . Bl) ?\s (Br . Bl) ?\s))
 		("when-not" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?⊃ (Bc . Bl) ?¬))
-		("when-let" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?⊃ (Bc . Bl) ?∃))))
+		("when-let" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?⊃ (Bc . Bl) ?ⅅ))))
 
 (prettify-symbols-mode +1)
 
