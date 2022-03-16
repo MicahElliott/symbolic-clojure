@@ -81,7 +81,8 @@
 		("->>" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s
 			       (Bl . Bl) ?- (Bc . Br) ?- (Bc . Bc) ?>
 			       (Bc . Bl) ?- (Br . Br) ?>))
-		("or" . (?\s (Br . Bl) ?\s (Bc . Bc) ?\∥))
+		("or" . (?\s (Br . Bl) ?\s (Bc . Bc) ?∥))
+		;; ("or" . (?\s (Br . Bl) ?\s (Bc . Bc) ?∨))
 		;; (":require" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?✱ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; (":require" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?ɼ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; (":require" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?Ʀ Ȑ Я ⁜  ⅀ ⅅ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
