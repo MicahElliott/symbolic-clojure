@@ -1,6 +1,6 @@
 ;;; symbolic-clojure.el --- Turn some clojure builtins into symbols. -*- lexical-binding: t -*-
 
-;; Copyright (C) 2022 Micah Elliott
+;; Copyright (C) 2023 Micah Elliott
 
 ;; Author: Micah Elliott <mde@micahelliott.com
 ;; URL: https://github.com/MicahElliott/symbolic-clojure
@@ -127,8 +127,9 @@
 		;; ("let" .   (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?∃))
 		("let" .   (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?ⅅ))
                 ;; ("nil" .   (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?∅))
-		("nil" .   (?∅ (Br . Bl) ?\s (Br . Bl) ?\s))
-		("def" .   (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?≔))
+		("nil" .   (?@ (Br . Bl) ?\s (Br . Bl) ?\s))
+                ("def" .   (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?≔))
+                ("map" .   (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?¨))
 		;; ("try" .   (?¿ (Br . Bl) ?T (Br . Bl) ?\s))
 		;; ("try" .   (?\s  (Br . Bl) ?\s  (Br . Bl) ?\s (Bc . Br) ?¿ (Bc . Bl) ?T))
 		;; ("try" .   (?\s  (Br . Bl) ?\s  (Br . Bl) ?\s (Bc . Br) ?¿ (Bc . Bl) ?₮))
@@ -149,12 +150,15 @@
 		("case" .  (?\s (Br . Bl) ?⋮ (Br . Bl)  ?⇉ (Br . Bl) ?\s))
 		;; (":else" .  (?Ω  (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		(":else" .  (?\s (Br . Bl) ?ℯ  (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
-		;; ("true" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?⊤ (Bc . Bl) ?⊤))
+		;; ("true" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Bc) ?⊤ (Bc . Bl) ?\s))
 		("true" .  (?⊤  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		("take" .  (?↑  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		("drop" .  (?↓  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; ("nil?" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?∅ (Bc . Bl) ??))
 		("nil?" .  (?¿ (Br . Bl) ?∅  (Br . Bl) ?? (Br . Bl) ?\s))
 		;; ("catch" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?≔))
-		("false" . (?⊥  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		;; ("false" . (?⊥  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		("false" . (?Ⅎ  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; ("catch" . (?¿  (Br . Bl) ?C (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		;; ("catch" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?\s (Bc . Br) ?¿  (Bc . Bl) ?C (Br . Bl)  ?\s))
 		("catch" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?\s (Bc . Br) ?\s  (Bc . Bl) ?₵ (Br . Bl)  ?\s))
@@ -162,12 +166,17 @@
 		;; ("throw" . (?¿  (Br . Bl) ?⊗  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s)) ; think "raise"
 		;; ⌁ ↯
 		("throw" . (?\s  (Br . Bl) ?⎋ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s)) ; think "raise"
+		("range" . (?\s  (Br . Bl) ?↕ (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s)) ; think "raise"
 		("recur" . (?\s (Br . Bl) ?↻  (Br . Bl) ?↻ (Br . Bl) ?\s (Br . Bl) ?\s))
 		("doseq" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?⊨ (Bc . Bl) ?∀  (Br . Bl) ?\s))
                 ("true?" . (?¿ (Br . Bl) ?⊤  (Br . Bl) ?\?  (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
                 ("defn-" . (?— (Br . Bl) ?λ (Br . Bl) ?≔ (Br . Bl) ?—  (Br . Bl) ?\s))
-		("false?" . (?¿ (Br . Bl) ?⊥ (Br . Bl) ?? (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		("false?" . (?¿ (Br . Bl) ?Ⅎ (Br . Bl) ?? (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		(":refer" . (?※ (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		("reduce" . (?´ (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		("concat" . (?∾ (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		("repeat" . (?⍟ (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
+		("reverse" . (?⌽ (Br . Bl)  ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s))
 		("if-not" . (?\s (Br . Bl) ?\s (Br . Bl) ?⊃ (Bc . Bc) ?⊃ (Br . Bl) ?¬  (Br . Bl) ?\s (Br . Bl) ?\s)) ; tricky!!
 		("if-let" . (?\s (Br . Bl) ?\s (Br . Bl) ?⊃ (Bc . Bc) ?⊃ (Br . Bl) ?ⅅ  (Br . Bl) ?\s (Br . Bl) ?\s))
 		("when-not" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Br . Bl) ?\s (Bc . Br) ?⊃ (Bc . Bl) ?¬))
